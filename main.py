@@ -6,3 +6,4 @@ from CNNsDemo import *
 # display(10)
 # print(torch.cuda.is_available())
 # print("git test")
+#ceshi ceshi
