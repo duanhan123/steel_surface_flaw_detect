@@ -7,4 +7,4 @@ from CNNsDemo import *
 # print(torch.cuda.is_available())
 # print("git test")
 #ceshi ceshi
-print("ceshiceshi")
+# print("ceshiceshi")
