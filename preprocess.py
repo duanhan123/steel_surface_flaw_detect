@@ -7,7 +7,7 @@ from torch.utils import data
 import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
-import cv2
+# import cv2
 import numpy as np
 import os
 import pandas as pd

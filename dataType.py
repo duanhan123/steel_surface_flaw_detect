@@ -9,7 +9,7 @@ import torchvision.transforms as transforms
 import matplotlib.pyplot as plt
 import torchvision
 from sklearn.model_selection import train_test_split
-import cv2
+# import cv2
 import numpy as np
 import pandas as pd
 import os
@@ -17,9 +17,12 @@ from PIL import Image
 #%%
 image_size = (256, 1600, 3)
 num_classes = 4
-num_epochs = 1
+num_epochs = 10
 batch_size = 8
 LR = 0.001
+use_gpu = torch.cuda.is_available()
+# torch.backends.cudnn.enabled = False
+# use_gpu = False
 train_label = pd.read_csv('severstal-steel-defect-detection/train.csv')
 
 
