@@ -57,11 +57,16 @@ class cnn(nn.Module):
         super(cnn, self).__init__()
         self.conv1 = nn.Sequential(nn.Conv2d(3,16,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
         self.conv2 = nn.Sequential(nn.Conv2d(16,32,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
-        self.out = nn.Linear(32*64*400, 4)
+        self.conv3 = nn.Sequential(nn.Conv2d(32,64,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
+        self.conv4 = nn.Sequential(nn.Conv2d(64,128,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
+        # self.out = nn.Linear(32*64*400, 4)
+        self.out = nn.Linear(128*16*100,4)
 
     def forward(self, x):
         x = self.conv1(x)
         x = self.conv2(x)
+        x = self.conv3(x)
+        x = self.conv4(x)
         x = x.view(x.size(0), -1)
         output = self.out(x)
         return output, x
