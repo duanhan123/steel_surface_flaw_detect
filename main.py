@@ -7,8 +7,7 @@ def main():
     # train()
     endTime = time.time()
     print("train time: %d s" % (endTime - startTime))
-    for i in range(10):
-        acc_cal(100)
+    # acc_cal(100)
     display(20)
 
 if __name__ == "__main__":

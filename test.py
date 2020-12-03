@@ -20,8 +20,10 @@ def display(num=10):
     image, label = test_dataiter.next()
     output = CNNnet(image)[0]
     _, predict = torch.max(output.data, 1)
-    # imshow(torchvision.utils.make_grid(image, nrow=1))
     for i in range(len(image)):
+        fig = plt.figure()
+        mngr = plt.get_current_fig_manager()
+        mngr.window.wm_geometry("+380+310")
         plt.imshow(np.transpose(image[i],(1,2,0)))
         plt.title('Groundtruth: %d, predict: %d' % (predict[i]+1,label[i]+1))
         plt.show()
@@ -40,4 +42,4 @@ def acc_cal(test_num=100):
     _, pred = torch.max(output.data, 1)
     print("accuracy rate: %.2f%%" % ((pred == label).sum() / float(test_num) * 100))
     endTime = time.time()
-    print("测试用时： %d s" % (endTime - startTime))
+    print("test time： %d s" % (endTime - startTime))

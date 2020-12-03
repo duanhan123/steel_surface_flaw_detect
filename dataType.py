@@ -17,7 +17,7 @@ from PIL import Image
 #%%
 image_size = (256, 1600, 3)
 num_classes = 4
-num_epochs = 10
+num_epochs = 1
 batch_size = 8
 LR = 0.001
 use_gpu = torch.cuda.is_available()
