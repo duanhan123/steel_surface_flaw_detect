@@ -40,8 +40,8 @@ def train():
         running_loss = running_loss / input_num
         print("the %d epoch Loss: %.3f" % (epoch,running_loss))
         L.append(running_loss)
-    plt.plot(range(num_epochs), L,'r')
-    plt.show()
+    # plt.plot(range(num_epochs), L,'r')
+    # plt.show()
 
     print('Finish training')
     torch.save(CNN, 'CNN.pkl')

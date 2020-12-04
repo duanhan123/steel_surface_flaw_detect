@@ -17,7 +17,7 @@ from PIL import Image
 #%%
 image_size = (256, 1600, 3)
 num_classes = 4
-num_epochs = 1
+num_epochs = 50
 batch_size = 8
 LR = 0.001
 use_gpu = torch.cuda.is_available()
@@ -59,14 +59,18 @@ class cnn(nn.Module):
         self.conv2 = nn.Sequential(nn.Conv2d(16,32,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
         self.conv3 = nn.Sequential(nn.Conv2d(32,64,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
         self.conv4 = nn.Sequential(nn.Conv2d(64,128,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
+        self.conv5 = nn.Sequential(nn.Conv2d(128,256,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
+        self.conv6 = nn.Sequential(nn.Conv2d(256,512,5,1,2), nn.ReLU(), nn.MaxPool2d(kernel_size=2))
         # self.out = nn.Linear(32*64*400, 4)
-        self.out = nn.Linear(128*16*100,4)
+        self.out = nn.Linear(512*4*25,4)
 
     def forward(self, x):
         x = self.conv1(x)
         x = self.conv2(x)
         x = self.conv3(x)
         x = self.conv4(x)
+        x = self.conv5(x)
+        x = self.conv6(x)
         x = x.view(x.size(0), -1)
         output = self.out(x)
         return output, x
